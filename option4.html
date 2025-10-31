@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TESDA Blue Modern Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex h-screen bg-blue-50 text-gray-800">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-blue-900 text-white flex flex-col">
+    <div class="p-4 text-lg font-bold tracking-wide">TESDA Admin</div>
+    <nav class="flex-1">
+      <a href="#" class="block px-4 py-2 rounded hover:bg-blue-800 bg-blue-800">Dashboard</a>
+      <a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Courses</a>
+      <a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Instructors</a>
+      <a href="#" class="block px-4 py-2 rounded hover:bg-blue-800">Reports</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 flex flex-col">
+    <!-- Header -->
+    <header class="flex justify-between items-center bg-white border-b border-gray-200 p-4">
+      <h1 class="text-xl font-semibold text-blue-800">TESDA Dashboard</h1>
+      <button class="flex items-center gap-2 bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800">
+        <span>Profile</span>
+      </button>
+    </header>
+
+    <!-- Content -->
+    <section class="flex-1 p-6 space-y-6 bg-blue-50 overflow-y-auto">
+      <!-- Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-xl shadow-sm border-t-4 border-blue-600">
+          <p class="text-gray-500 text-sm">Active Courses</p>
+          <h2 class="text-2xl font-bold text-blue-700 mt-2">54</h2>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow-sm border-t-4 border-green-600">
+          <p class="text-gray-500 text-sm">Enrolled Students</p>
+          <h2 class="text-2xl font-bold text-green-700 mt-2">1,245</h2>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow-sm border-t-4 border-yellow-500">
+          <p class="text-gray-500 text-sm">Pending Assessments</p>
+          <h2 class="text-2xl font-bold text-yellow-600 mt-2">12</h2>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow-sm border-t-4 border-red-500">
+          <p class="text-gray-500 text-sm">Inactive Accounts</p>
+          <h2 class="text-2xl font-bold text-red-600 mt-2">8</h2>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-3">
+        <button class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800">Add Course</button>
+        <button class="bg-white border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-100">Export</button>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+        <table class="w-full text-left">
+          <thead class="bg-blue-100 text-blue-800 text-sm uppercase">
+            <tr>
+              <th class="px-6 py-3">Course</th>
+              <th class="px-6 py-3">Instructor</th>
+              <th class="px-6 py-3">Status</th>
+              <th class="px-6 py-3">Students</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="px-6 py-3">Welding NC II</td>
+              <td class="px-6 py-3">Juan Dela Cruz</td>
+              <td class="px-6 py-3 text-green-600">Active</td>
+              <td class="px-6 py-3">35</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-6 py-3">Cookery NC II</td>
+              <td class="px-6 py-3">Maria Santos</td>
+              <td class="px-6 py-3 text-yellow-600">Pending</td>
+              <td class="px-6 py-3">27</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

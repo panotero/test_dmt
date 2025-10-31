@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Luxe Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .glass {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.7);
+    }
+    .transition-theme {
+      transition: all 0.4s ease-in-out;
+    }
+  </style>
+</head>
+<body class="flex h-screen bg-gray-100 text-gray-800 font-[system-ui] transition-theme">
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="w-64 glass border-r border-gray-200 flex flex-col transition-theme">
+    <div class="p-6 text-lg font-semibold tracking-tight">Admin Panel</div>
+    <nav id="navLinks" class="flex-1 space-y-1 px-3">
+      <a href="#" class="nav-link block px-4 py-2 rounded-xl font-medium transition">Dashboard</a>
+      <a href="#" class="nav-link block px-4 py-2 rounded-xl transition">Users</a>
+      <a href="#" class="nav-link block px-4 py-2 rounded-xl transition">Reports</a>
+      <a href="#" class="nav-link block px-4 py-2 rounded-xl transition">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 flex flex-col transition-theme">
+    <!-- Header -->
+    <header id="header" class="flex justify-between items-center border-b border-gray-200 p-4 shadow-sm transition-theme">
+      <div class="flex items-center gap-3">
+        <h1 class="text-2xl font-semibold">Dashboard</h1>
+        <select id="themeSelect" class="border px-3 py-1 rounded-lg text-sm">
+          <option value="0">Apple White</option>
+          <option value="1">Tesla Gray</option>
+          <option value="2">TESDA Blue</option>
+          <option value="3">Ivory Black</option>
+          <option value="4">Pastel Mint</option>
+          <option value="5">Sandstone</option>
+          <option value="6">Sakura</option>
+          <option value="7">Slate</option>
+          <option value="8">Nordic</option>
+          <option value="9">Dark Mode</option>
+          <option value="10">Oceanic Glow</option>
+          <option value="11">Sunset Coral</option>
+          <option value="12">Cyber Neon</option>
+          <option value="13">Forest Dew</option>
+          <option value="14">Royal Indigo</option>
+        </select>
+      </div>
+      <button id="profileBtn" class="bg-gray-900 text-white px-4 py-2 rounded-full hover:opacity-90 transition">Profile</button>
+    </header>
+
+    <!-- Content -->
+    <section id="content" class="flex-1 p-8 bg-gray-100 overflow-y-auto transition-theme">
+      <!-- Stat Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="p-6 rounded-2xl shadow-sm border transition-theme">
+          <p class="text-sm text-gray-500">Users</p>
+          <h2 class="text-2xl font-semibold mt-1">1,240</h2>
+        </div>
+        <div class="p-6 rounded-2xl shadow-sm border transition-theme">
+          <p class="text-sm text-gray-500">Active Projects</p>
+          <h2 class="text-2xl font-semibold mt-1">18</h2>
+        </div>
+        <div class="p-6 rounded-2xl shadow-sm border transition-theme">
+          <p class="text-sm text-gray-500">Pending Tasks</p>
+          <h2 class="text-2xl font-semibold mt-1">42</h2>
+        </div>
+        <div class="p-6 rounded-2xl shadow-sm border transition-theme">
+          <p class="text-sm text-gray-500">System Uptime</p>
+          <h2 class="text-2xl font-semibold mt-1">99.98%</h2>
+        </div>
+      </div>
+
+      <!-- Graph Card -->
+        <div
+          class="p-6 mb-8 rounded-2xl shadow-sm border bg-white transition-theme"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-gray-800">User Growth Overview</h3>
+            <span class="text-sm text-gray-500">Last 6 Months</span>
+          </div>
+          <canvas id="growthChart" height="120"></canvas>
+        </div>
+
+      <!-- Table -->
+      <div class="bg-white rounded-2xl shadow-sm border overflow-hidden transition-theme">
+        <div class="p-4 border-b flex justify-between items-center">
+          <h3 class="font-semibold">Recent Activities</h3>
+          <button class="text-gray-600 hover:text-black text-sm">View All</button>
+        </div>
+        <table class="w-full text-sm text-left">
+          <thead class="bg-gray-50 uppercase text-xs">
+            <tr>
+              <th class="px-6 py-3">User</th>
+              <th class="px-6 py-3">Action</th>
+              <th class="px-6 py-3">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="px-6 py-3">John Doe</td>
+              <td class="px-6 py-3">Created a new project</td>
+              <td class="px-6 py-3">Oct 31, 2025</td>
+            </tr>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="px-6 py-3">Jane Smith</td>
+              <td class="px-6 py-3">Updated profile details</td>
+              <td class="px-6 py-3">Oct 30, 2025</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3">Mark Lee</td>
+              <td class="px-6 py-3">Added new members</td>
+              <td class="px-6 py-3">Oct 29, 2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const themes = [
+      { bg: "#F9FAFB", sidebar: "#FFFFFF", header: "#FFFFFF", accent: "#0071E3", text: "#111827", border: "#E5E7EB", card: "#FFFFFF" },
+      { bg: "#ECECEC", sidebar: "#FFFFFF", header: "#F3F4F6", accent: "#D32F2F", text: "#0F172A", border: "#D1D5DB", card: "#F9FAFB" },
+      { bg: "#F4F6FA", sidebar: "#1A56DB", header: "#1E3A8A", accent: "#FFD60A", text: "#FFFFFF", border: "#1E40AF", card: "#1E3A8A" },
+      { bg: "#FAF9F6", sidebar: "#FFFFFF", header: "#F4F4F4", accent: "#111111", text: "#111111", border: "#E5E5E5", card: "#FFFFFF" },
+      { bg: "#E9FBF4", sidebar: "#FFFFFF", header: "#ECFDF5", accent: "#10B981", text: "#064E3B", border: "#A7F3D0", card: "#FFFFFF" },
+      { bg: "#F9F4EE", sidebar: "#FFFFFF", header: "#FAFAFA", accent: "#E0A96D", text: "#3F3F3F", border: "#E5E5E5", card: "#FFFFFF" },
+      { bg: "#FFF7F9", sidebar: "#FFFFFF", header: "#FFE4E6", accent: "#FF7EB9", text: "#4A4A4A", border: "#FFD6E8", card: "#FFFFFF" },
+      { bg: "#F1F5F9", sidebar: "#FFFFFF", header: "#F8FAFC", accent: "#475569", text: "#1E293B", border: "#CBD5E1", card: "#FFFFFF" },
+      { bg: "#E3E8ED", sidebar: "#F8FAFC", header: "#E2E8F0", accent: "#0284C7", text: "#0F172A", border: "#CBD5E1", card: "#FFFFFF" },
+      { bg: "#0F172A", sidebar: "#1E293B", header: "#1E293B", accent: "#38BDF8", text: "#F9FAFB", border: "#334155", card: "#1E293B" },
+      { bg: "#EBFAFF", sidebar: "#FFFFFF", header: "#E0F7FA", accent: "#00B8D9", text: "#023047", border: "#B2EBF2", card: "#FFFFFF" },
+      { bg: "#FFF5F2", sidebar: "#FFFFFF", header: "#FFE4E1", accent: "#FF5C5C", text: "#2C2C2C", border: "#FFBDBD", card: "#FFFFFF" },
+      { bg: "#0A0A0A", sidebar: "#121212", header: "#181818", accent: "#39FF14", text: "#E0E0E0", border: "#333333", card: "#1E1E1E" },
+      { bg: "#E9F5EB", sidebar: "#FFFFFF", header: "#D1FAE5", accent: "#16A34A", text: "#064E3B", border: "#A7F3D0", card: "#FFFFFF" },
+      { bg: "#F3F1FF", sidebar: "#FFFFFF", header: "#EDE9FE", accent: "#5B21B6", text: "#1E1B4B", border: "#DDD6FE", card: "#FFFFFF" },
+    ];
+
+    const sidebar = document.getElementById("sidebar");
+    const header = document.getElementById("header");
+    const profileBtn = document.getElementById("profileBtn");
+    const content = document.getElementById("content");
+    const body = document.body;
+    const select = document.getElementById("themeSelect");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function applyTheme(index) {
+      const t = themes[index];
+      body.style.backgroundColor = t.bg;
+      body.style.color = t.text;
+      sidebar.style.backgroundColor = t.sidebar;
+      header.style.backgroundColor = t.header;
+      profileBtn.style.backgroundColor = t.accent;
+      profileBtn.style.color = "#fff";
+      sidebar.style.borderColor = t.border;
+      header.style.borderColor = t.border;
+      content.style.backgroundColor = t.bg;
+
+      // Sidebar active link color
+      navLinks.forEach((link, i) => {
+        if (i === 0) {
+          link.style.backgroundColor = t.accent;
+          link.style.color = "#fff";
+        } else {
+          link.style.backgroundColor = "transparent";
+          link.style.color = t.text;
+        }
+      });
+
+      document.querySelectorAll("section div.p-6, .bg-white").forEach(card => {
+        card.style.backgroundColor = t.card;
+        card.style.borderColor = t.border;
+        card.style.color = t.text;
+      });
+    }
+
+    select.addEventListener("change", e => applyTheme(e.target.value));
+    applyTheme(0);
+      // Chart.js setup
+      const ctx = document.getElementById("growthChart").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+          datasets: [
+            {
+              label: "New Users",
+              data: [120, 180, 220, 260, 310, 400],
+              fill: true,
+              backgroundColor: "rgba(37, 99, 235, 0.1)",
+              borderColor: "#2563EB",
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+          },
+          scales: {
+            y: { beginAtZero: true, grid: { color: "#E5E7EB" } },
+            x: { grid: { display: false } },
+          },
+        },
+      });
+  </script>
+</body>
+</html>

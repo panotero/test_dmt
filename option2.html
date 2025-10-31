@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Breeze Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex h-screen bg-slate-100 text-slate-800 font-[system-ui]">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white border-r border-slate-200 flex flex-col">
+    <div class="p-6 text-lg font-semibold tracking-tight">Admin Panel</div>
+    <nav class="flex-1 space-y-1 px-3">
+      <a href="#" class="block px-4 py-2 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition">Dashboard</a>
+      <a href="#" class="block px-4 py-2 rounded-xl hover:bg-slate-100 transition">Users</a>
+      <a href="#" class="block px-4 py-2 rounded-xl hover:bg-slate-100 transition">Reports</a>
+      <a href="#" class="block px-4 py-2 rounded-xl hover:bg-slate-100 transition">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 flex flex-col">
+    <!-- Header -->
+    <header class="flex justify-between items-center bg-white border-b border-slate-200 p-4 shadow-sm">
+      <h1 class="text-2xl font-semibold">Dashboard</h1>
+      <button class="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">
+        <span>Profile</span>
+      </button>
+    </header>
+
+    <!-- Content -->
+    <section class="flex-1 p-8 bg-slate-100 overflow-y-auto">
+      <!-- Stat Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <p class="text-sm text-slate-500">Users</p>
+          <h2 class="text-2xl font-semibold mt-1">1,240</h2>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <p class="text-sm text-slate-500">Projects</p>
+          <h2 class="text-2xl font-semibold mt-1">32</h2>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <p class="text-sm text-slate-500">Tasks</p>
+          <h2 class="text-2xl font-semibold mt-1">87</h2>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <p class="text-sm text-slate-500">Revenue</p>
+          <h2 class="text-2xl font-semibold mt-1">$24,580</h2>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="p-4 border-b border-slate-100 flex justify-between items-center">
+          <h3 class="font-semibold text-slate-800">Recent Activities</h3>
+          <button class="text-blue-600 hover:text-blue-800 text-sm">View All</button>
+        </div>
+        <table class="w-full text-sm text-left">
+          <thead class="bg-slate-50 text-slate-500 uppercase text-xs">
+            <tr>
+              <th class="px-6 py-3">User</th>
+              <th class="px-6 py-3">Action</th>
+              <th class="px-6 py-3">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b hover:bg-slate-50">
+              <td class="px-6 py-3">John Doe</td>
+              <td class="px-6 py-3">Created new project</td>
+              <td class="px-6 py-3">Oct 31, 2025</td>
+            </tr>
+            <tr class="border-b hover:bg-slate-50">
+              <td class="px-6 py-3">Jane Smith</td>
+              <td class="px-6 py-3">Updated settings</td>
+              <td class="px-6 py-3">Oct 30, 2025</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-3">Mark Lee</td>
+              <td class="px-6 py-3">Added team members</td>
+              <td class="px-6 py-3">Oct 29, 2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
