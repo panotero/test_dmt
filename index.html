@@ -53,6 +53,15 @@
           <option value="14">Royal Indigo</option>
         </select>
       </div>
+      <!-- Modal Trigger Buttons -->
+<div class="flex gap-4 mt-8">
+  <button id="openInputModal" class="bg-[#0071E3] text-white px-4 py-2 rounded-lg hover:opacity-90 transition">
+    Open Input Modal
+  </button>
+  <button id="openApprovalModal" class="bg-[#0071E3] text-white px-4 py-2 rounded-lg hover:opacity-90 transition">
+    Open Approval Modal
+  </button>
+</div>
       <button id="profileBtn" class="bg-gray-900 text-white px-4 py-2 rounded-full hover:opacity-90 transition">Profile</button>
     </header>
 
@@ -124,6 +133,33 @@
       </div>
     </section>
   </main>
+  
+<!-- Input Modal -->
+<div id="inputModal" class="fixed inset-0 bg-black/30 flex items-center justify-center hidden transition">
+  <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
+    <h3 class="text-lg font-semibold mb-4">Enter Your Details</h3>
+    <div class="space-y-3">
+      <input type="text" placeholder="Full Name" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input type="email" placeholder="Email Address" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+    <div class="flex justify-end gap-3 mt-6">
+      <button id="cancelInput" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition">Cancel</button>
+      <button id="confirmInput" class="px-4 py-2 rounded-lg bg-[#0071E3] text-white hover:opacity-90 transition">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Approval Modal -->
+<div id="approvalModal" class="fixed inset-0 bg-black/30 flex items-center justify-center hidden transition">
+  <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 text-center">
+    <h3 class="text-lg font-semibold mb-2">Approve Action?</h3>
+    <p class="text-sm text-gray-600 mb-5">Are you sure you want to approve this request?</p>
+    <div class="flex justify-center gap-3">
+      <button id="cancelApproval" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition">Cancel</button>
+      <button id="confirmApproval" class="px-4 py-2 rounded-lg bg-[#0071E3] text-white hover:opacity-90 transition">Approve</button>
+    </div>
+  </div>
+</div>
 
   <script>
     const themes = [
@@ -213,5 +249,34 @@
         },
       });
   </script>
+
+  <script>
+  // --- Input Modal ---
+  const inputModal = document.getElementById("inputModal");
+  document.getElementById("openInputModal").addEventListener("click", () => {
+    inputModal.classList.remove("hidden");
+  });
+  document.getElementById("cancelInput").addEventListener("click", () => {
+    inputModal.classList.add("hidden");
+  });
+  document.getElementById("confirmInput").addEventListener("click", () => {
+    alert("Information confirmed!");
+    inputModal.classList.add("hidden");
+  });
+
+  // --- Approval Modal ---
+  const approvalModal = document.getElementById("approvalModal");
+  document.getElementById("openApprovalModal").addEventListener("click", () => {
+    approvalModal.classList.remove("hidden");
+  });
+  document.getElementById("cancelApproval").addEventListener("click", () => {
+    approvalModal.classList.add("hidden");
+  });
+  document.getElementById("confirmApproval").addEventListener("click", () => {
+    alert("Action approved!");
+    approvalModal.classList.add("hidden");
+  });
+</script>
+
 </body>
 </html>
